@@ -12,7 +12,7 @@
 ## **🛠️ Technologies Used**  
 - **Machine Learning:** TensorFlow, PyTorch, Scikit-Learn  
 - **Computer Vision:** OpenCV, Deep Learning Models  
-- **Backend:** FastAPI, Flask, Django  
+- **Backend:** FastAPI  
 - **Frontend:** React, Next.js, TailwindCSS  
 - **Deployment:** Docker, AWS/GCP  
 
