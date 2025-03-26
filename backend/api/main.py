@@ -2,12 +2,28 @@ from fastapi import FastAPI, File, UploadFile, Form, Depends
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from pydantic import BaseModel
 import shutil
 import os
 
 app = FastAPI()
+
+# Configure CORS
+origins = [
+    "http://localhost:3000",  # Allow frontend running on localhost 
+    "http://127.0.0.1:3000",
+    "*",  # Allow all origins (use with caution in production)
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Database setup
 DATABASE_URL = "sqlite:///./skin_analysis.db"
