@@ -1,0 +1,30 @@
+# Ignore Python-related files (backend)
+backend/__pycache__/
+backend/venv/
+backend/.env
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+
+# Ignore Node.js-related files (frontend)
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/.env
+frontend/.env.development.local
+frontend/.env.production.local
+frontend/out/
+frontend/.turbo/
+frontend/.vercel/
+frontend/.swc/
+
+# Ignore OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+node_modules/
+.turbo
