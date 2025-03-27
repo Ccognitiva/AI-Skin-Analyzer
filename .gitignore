@@ -29,4 +29,5 @@ Thumbs.db
 node_modules/
 .turbo
 backend/dataset/
+backend/aurora_ai.db
 
