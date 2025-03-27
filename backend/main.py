@@ -43,3 +43,6 @@ app.include_router(consultation.router, prefix="/consultations", tags=["Consulta
 
 
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
