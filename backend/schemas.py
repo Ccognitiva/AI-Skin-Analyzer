@@ -1,14 +1,16 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
+# Condition Response Schema
 class ConditionResponse(BaseModel):
     condition_id: int
     name: str
 
     class Config:
-        from_attributes = True  # Allows SQLAlchemy-to-Pydantic conversion
+        from_attributes = True  # Enables SQLAlchemy-to-Pydantic conversion
 
+# Analysis Result Schema
 class AnalysisResult(BaseModel):
     analysis_id: int
     user_id: int
@@ -18,37 +20,44 @@ class AnalysisResult(BaseModel):
 
     class Config:
         from_attributes = True
-        
 
-# Schema for creating a new user
+# User Creation Schema
 class UserCreate(BaseModel):
     name: str
-    email: str
+    email: EmailStr  
     password: str
-    skin_type: str = None  # Optional field for skin type
+    skin_type: Optional[str] = None  
 
     class Config:
-        orm_mode = True  # To allow SQLAlchemy model conversion
+        from_attributes = True
 
-# Schema for user response (for returning user details)
+# User Response Schema
 class UserResponse(BaseModel):
     user_id: int
     name: str
-    email: str
-    skin_type: str
-    created_at: str
+    email: EmailStr
+    skin_type: Optional[str]
+    created_at: datetime 
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
-# Schema for a list of users response
+# List of Users Response Schema
 class UserListResponse(BaseModel):
     users: List[UserResponse]
 
-
+# Login Request Schema
 class LoginRequest(BaseModel):
-    email: str
+    email: EmailStr
     password: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+# Login Response Schema
+class LoginResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+    class Config:
+        from_attributes = True
