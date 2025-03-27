@@ -1,0 +1,32 @@
+{
+  "name": "ai-skin-analyzer",
+  "version": "1.0.0",
+  "description": "Monorepo for the AI Skin Analyzer (Next.js frontend & FastAPI backend).",
+  "scripts": {
+    "backend": "cd backend && call .venv\\Scripts\\activate && uvicorn main:app --reload",
+    "backend:conda": "cd backend && conda run -n aienv uvicorn main:app --reload",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev:conda": "concurrently \"npm run backend:conda\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyasyn/ai-skin-analyzer.git"
+  },
+  "keywords": [
+    "ai-skin-analyzer",
+    "face-recognition",
+    "monorepo",
+    "nextjs",
+    "fastapi"
+  ],
+  "author": "Yasin Walum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wyasyn/ai-skin-analyzer/issues"
+  },
+  "homepage": "https://github.com/wyasyn/ai-skin-analyzer#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
