@@ -61,3 +61,12 @@ class LoginResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class UserUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    skin_type: Optional[str] = None
+
+    class Config:
+        orm_mode = True  # Allows SQLAlchemy model conversion
