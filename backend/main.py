@@ -4,16 +4,15 @@ from backend.database import Base, engine
 from backend.routes import admin, consultation, progress, recommendations, user
 from routes.analysis import router as analysis_router
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 app = FastAPI()
 
 
 # Configure CORS
-origins = [
-    "http://localhost:3000",  # Allow frontend running on localhost
-    "http://127.0.0.1:3000",
-    "*",  # Allow all origins (use with caution in production)
-]
+
+origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -33,7 +32,6 @@ app.include_router(user.router, prefix="/users", tags=["Users"])
 app.include_router(recommendations.router, prefix="/recommendations", tags=["Recommendations"])
 app.include_router(progress.router, prefix="/progress", tags=["Progress"])
 app.include_router(consultation.router, prefix="/consultations", tags=["Consultations"])
-app.include_router(admin.router, prefix="/admin", tags=["Admin"])
 
 if __name__ == "__main__":
     import uvicorn

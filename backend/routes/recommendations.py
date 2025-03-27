@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from backend.auth import get_current_user
 from models import Recommendation, User
 from schemas import RecommendationResponse
 from database import get_db
-from dependencies import get_current_user
 
 router = APIRouter(prefix="/recommendations", tags=["Recommendations"])
 
