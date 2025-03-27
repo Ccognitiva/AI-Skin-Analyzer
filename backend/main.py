@@ -25,7 +25,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-# Initialize the database
+# # Initialize the database
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Run database initialization only once at startup."""
@@ -33,6 +33,7 @@ async def lifespan(app: FastAPI):
     yield  
     
 app.state.lifespan = lifespan
+
 
 # Testing routes
 app.include_router(testing_router, prefix="", tags=["Testing"])

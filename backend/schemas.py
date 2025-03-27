@@ -69,4 +69,4 @@ class UserUpdate(BaseModel):
     skin_type: Optional[str] = None
 
     class Config:
-        orm_mode = True  # Allows SQLAlchemy model conversion
+        from_attributes = True

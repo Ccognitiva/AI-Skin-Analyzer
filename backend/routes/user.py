@@ -6,7 +6,7 @@ from schemas import UserListResponse, UserResponse
 from database import get_db
 from schemas import UserUpdate
 
-router = APIRouter(prefix="/users", tags=["Users"])
+router = APIRouter()
 
 
 # Get a user by ID route
@@ -21,7 +21,9 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 @router.get("/", response_model=UserListResponse)
 def get_users(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     users = db.query(User).offset(skip).limit(limit).all()
-    return UserListResponse(users=users)
+    
+    return UserListResponse(users=users)  # Will return an empty list if no users exist
+
 
 
 

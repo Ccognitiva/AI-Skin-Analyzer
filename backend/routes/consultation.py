@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/consultation", tags=["Consultation"])
+router = APIRouter()
 
 @router.post("/")
 def book_consultation():

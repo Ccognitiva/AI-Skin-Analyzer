@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 
-router = APIRouter(prefix="/progress", tags=["Progress"])
+router = APIRouter()
 
 @router.post("/")
 def add_progress():
