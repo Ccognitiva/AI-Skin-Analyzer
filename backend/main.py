@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from auth import router as auth_router
 from database import init_db
@@ -25,10 +26,13 @@ app.add_middleware(
 )
 
 # Initialize the database
-@app.on_event("startup")
-def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     """Run database initialization only once at startup."""
-    init_db()
+    init_db()  # Initialize the database
+    yield  
+    
+app.state.lifespan = lifespan
 
 # Testing routes
 app.include_router(testing_router, prefix="", tags=["Testing"])
@@ -46,7 +50,7 @@ if __name__ == "__main__":
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
-        port=int(os.getenv("PORT", 8000)),  # Make port configurable
+        port=int(os.getenv("PORT", 8000)),  
         reload=True,  
         log_level="info" 
     )

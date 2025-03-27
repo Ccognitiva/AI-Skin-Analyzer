@@ -1,5 +1,6 @@
 # Ignore Python-related files (backend)
 backend/__pycache__/
+backend/routes/__pycache__/
 backend/venv/
 backend/.env
 backend/.mypy_cache/
@@ -31,3 +32,8 @@ node_modules/
 backend/dataset/
 backend/aurora_ai.db
 
+# Ignore all Python bytecode caches
+**/__pycache__/
+
+# Ignore all .pyc files
+*.pyc
