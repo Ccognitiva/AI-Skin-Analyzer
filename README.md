@@ -20,4 +20,4 @@
 We welcome contributions! Feel free to fork the repo, create a branch, and submit a PR. Check the **Contributing Guidelines** for more details.  
 
 ### **📬 Contact & Support**  
-📧 Email: (Send an email)[ywalum@gmail.com]   
+📧 Email: [Send an email](mailto:ywalum@gmail.com) 
